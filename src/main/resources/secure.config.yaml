@@ -1,0 +1,12 @@
+cdp:
+  consumer:
+    key: "![your_encrypted_property]"
+    secret: "![your_encrypted_property]"
+
+salesforce:
+  username: "![your_encrypted_property]"
+  password: "![your_encrypted_property]"
+
+dynamodb:
+  accessKey: "![your_encrypted_property]"
+  secretKey: "![your_encrypted_property]"

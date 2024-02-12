@@ -1,0 +1,17 @@
+cdp:
+  api:
+    name: "your_sourceApiName"
+  object:
+    name: "your_objectName"
+
+salesforce:
+  url: "https://login.salesforce.com/"
+
+http:
+  listener:
+    host: "0.0.0.0"
+    port: "8081"
+
+dynamodb:
+  table:
+    name: "your_tableName"

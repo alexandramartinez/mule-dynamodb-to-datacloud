@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dynamodb="http://www.mulesoft.org/schema/mule/dynamodb" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:sdc="http://www.mulesoft.org/schema/mule/sdc" xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	http://www.mulesoft.org/schema/mule/dynamodb http://www.mulesoft.org/schema/mule/dynamodb/current/mule-dynamodb.xsd
+	http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+	http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+	http://www.mulesoft.org/schema/mule/sdc http://www.mulesoft.org/schema/mule/sdc/current/mule-sdc.xsd
+	http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+
+  <flow name="Sync DynamoDB with Data Cloud">
+    <http:listener path="sync" config-ref="http_listener_config" doc:name="/sync" />
+    <dynamodb:scan config-ref="dynamodb_config" tableName="${dynamodb.table.name}" doc:name="Scan" />
+    <ee:transform doc:name="Data Cloud input">
+      <ee:message>
+        <ee:set-payload resource="dw/dynamodb-response.dwl" />
+      </ee:message>
+    </ee:transform>
+    <sdc:insert-objects sourceNameUriParam="${cdp.api.name}" objectNameUriParam="${cdp.object.name}" config-ref="cdp_sdc_config" doc:name="Insert" />
+  </flow>
+
+</mule>

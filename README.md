@@ -10,6 +10,11 @@ Mule 4 app created to **scan** items from Amazon DynamoDB and insert them in Sal
 - Example input payload for the DataWeave script can be found in [payload.json](/src/test/resources/dw/dynamodb-response/Playground/inputs/payload.json)
 - The encryption key property is called `encryption.key`
 
+## Similar repos
+
+[![](https://github-readme-stats.vercel.app/api/pin/?username=alexandramartinez&repo=datacloud-mulesoft-integration&theme=default_repocard)](https://github.com/alexandramartinez/datacloud-mulesoft-integration)
+[![](https://github-readme-stats.vercel.app/api/pin/?username=alexandramartinez&repo=data-cloud-auth&theme=default_repocard)](https://github.com/alexandramartinez/data-cloud-auth)
+
 ## Resources
 
 If you need additional resources to do your configs, check out the following links:
